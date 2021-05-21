@@ -25,6 +25,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "laravel-echo": "^1.10.0",
+        "pusher-js": "^7.0.3",
         "vform": "^2.0.4",
         "vue-multiselect": "^2.1.6",
         "vue-router": "^3.5.1",

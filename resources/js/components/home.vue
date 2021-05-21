@@ -29,15 +29,15 @@ export default {
             }
         }
     },
- 
     created(){
         axios.defaults.headers.common["Authorization"]="Bearer "+ localStorage.getItem("token");
         this.$store.dispatch("currentUser/getUser");
         
-    
-            if(this.currentUser.isAdmin=1){
-                this.$router.push("/employee");
-            }
-    }
+    },
+     updated(){
+        if(this.currentUser.isAdmin==0){
+            this.$router.push("/employee");
+        }
+    },
 }
 </script>

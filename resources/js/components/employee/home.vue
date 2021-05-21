@@ -1,15 +1,18 @@
 <template>
     <div>
         <headerC>
-             <router-link :to="{name:'users.edit',params:{id:currentUser.id}}" slot="currentUser">
-                 <h2>{{ currentUser.email }}</h2>
+             <router-link :to="{name:'employee.edit'}" slot="currentUser">
+                 <h2>
+                     <img :src="'/profileImg/'+currentUser.path" alt="" width="80" height="80" style="border-radius:50%">
+                     {{ currentUser.email }} 
+                    </h2>
               </router-link> 
         </headerC>
         <br>
     
         <!-- <Leftside></Leftside> -->
         
-        <rightside>
+        <rightside >
             <router-view></router-view>
         </rightside>
         
@@ -29,9 +32,16 @@ export default {
         }
     },
  
-    created(){
+     created(){
         axios.defaults.headers.common["Authorization"]="Bearer "+ localStorage.getItem("token");
-        this.$store.dispatch("currentUser/getUser");
-    }
+         this.$store.dispatch("currentUser/getUser");
+
+        
+    },
+     updated(){
+        if(this.currentUser.isAdmin==1){
+            this.$router.push("/");
+        }
+    },
 }
 </script>

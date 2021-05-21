@@ -57,9 +57,6 @@ export default {
             this.message='',
             this.error={}
 
-            if(this.form.userCheck.length==0){
-                this.message="sorry! please assign user to this task."
-            }else{
                 this.form.put("/api/tasks/"+this.$route.params.id)
                 .then(res=>{
                   
@@ -78,7 +75,7 @@ export default {
                     const messages=JSON.parse(error.request.response);
                     this.error=messages.errors;
                 })
-            }
+            
         },
 
         addTag (newTag) {

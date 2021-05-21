@@ -57,9 +57,7 @@ export default {
             this.message='',
             this.error={}
 
-            if(this.form.userCheck.length==0){
-                this.message="sorry! please assign user to this task."
-            }else{
+            
                 this.form.post("/api/tasks")
                 .then(res=>{
                     axios.post("api/task/mangement",
@@ -79,7 +77,7 @@ export default {
                     const messages=JSON.parse(error.request.response);
                     this.error=messages.errors;
                 })
-            }
+            
         },
 
         addTag (newTag) {

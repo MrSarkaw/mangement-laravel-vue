@@ -22,17 +22,19 @@ class taskController extends Controller
     public function store(taskRequest $request)
     {
 
+
+        $userId=[];
+
         // check if users selected
-        if(count($request->userCheck)==0){
-            return response(["message"=>"please assign user to this task"],422);
+        if(count($request->userCheck)!=0){  
+            // collect  user id
+            foreach($request->userCheck as $row){
+                User::findOrFail($row["id"]);
+                $userId[]=$row['id'];
+            }    
         }
 
-        // check for id of user and collect id
-        $userId=[];
-        foreach($request->userCheck as $row){
-            User::findOrFail($row["id"]);
-            $userId[]=$row['id'];
-        }       
+         
 
         $request->merge(["user_id" => Auth::id()]);
         $id= task::insertGetId($request->only("title", "description", "user_id", "start_date", "end_date"));

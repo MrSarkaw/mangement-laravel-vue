@@ -1,8 +1,5 @@
 <template>
-    <div>   
-            <div>
-
-            </div>
+    <div> 
             <p>not started</p>
 
             <div style="border:1px solid black;" v-for="(item,index) in notStart" :key="index">
@@ -33,7 +30,7 @@ export default {
     data:()=>({
         notStart:[],
         inProgress:[],
-        done:[],
+        done:[],        
     }),
     created(){
         axios.get("/api/employee/task").then((response)=>{
@@ -47,6 +44,37 @@ export default {
                 }
             })
         })
+    },
+ 
+    mounted(){
+      
+        Echo.channel("task").listen("task",(e)=>{            
+            if(this.$store.state.currentUser.user.id== e.task.user_id){
+                this.notStart.unshift(e.task)
+            }
+        });
+        
+        Echo.channel("delete-task").listen("deleteTask",(e)=>{ 
+            if(this.$store.state.currentUser.user.id== e.task.user_id){
+                         
+
+                let newdata=  this.notStart.filter((d)=>{
+                        return d.task_id != e.task.task_id
+                    })
+                   this.notStart=newdata;
+
+                 newdata=  this.inProgress.filter((d)=>{
+                         return d.task_id != e.task.task_id
+                    })
+                    this.inProgress=newdata;
+                    
+                 newdata=  this.done.filter((d)=>{
+                         return d.task_id != e.task.task_id
+                    })
+                    this.done=newdata;
+            }
+        });
+        
     }
 }
 </script>

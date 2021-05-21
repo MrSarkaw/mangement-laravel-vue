@@ -8,6 +8,7 @@ import {routes} from './routes'
 import store from './store'
 
 import Multiselect from 'vue-multiselect'
+import Vue from 'vue';
 
 // use
 Vue.use(VueRouter);

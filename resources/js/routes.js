@@ -12,6 +12,7 @@ import userIndex from './components/user/index.vue';
     // employee
 import empHome from './components/employee/home.vue';
     import employeesTask from './components/employee/tasks.vue'
+    import employeesEdit from './components/employee/edit.vue'
 
 
 export const routes = [
@@ -57,6 +58,7 @@ export const routes = [
         path: "/employee/", component: empHome,
         children:[
             {path:"/",component:employeesTask,name:"employee.index"},
+            {path:"edit",component:employeesEdit,name:"employee.edit"},
         ],
         beforeEnter: (to, from, next) => {
             const token = localStorage.getItem("token");
