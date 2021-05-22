@@ -30,7 +30,7 @@ Route::middleware(['auth:api'])->group(function () {
 
         // fetch all task
         Route::get("/employee/task","Employee\\empController@index");
-        Route::patch("/employee/task/{task_id}","Employee\\empController@updateState");
+        Route::put("/employee/task/{task_id}","Employee\\empController@updateState");
         Route::patch("/employee/profile","Employee\\empController@update");
         route::get("/employee/fetchProfile","Employee\\empController@fetch");
 

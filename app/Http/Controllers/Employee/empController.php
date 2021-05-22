@@ -19,18 +19,12 @@ class empController extends Controller
         return response()->json(["tasks" => $userTask, "status" => $this->status]);
     }
 
-    public function updateState(Request $request, $task_id)
+    public function updateState(Request $request, $id)
     {
         try{
             if (in_array($request->status, $this->status)) {
-
-                  userTask::where("task_id", $task_id)
-                        ->where("user_id", Auth::id())->firstOrFail()
-                        ->update($request->only("status"));
-         
-                    return response(["message" => "status updated"]);
-                
-                
+                  userTask::findOrFail($id)->update($request->only("status"));
+                  return response(["message" => "status updated"]);        
             } else {
                 return response(["message" => "choose right status!"]);
             }
