@@ -1,5 +1,10 @@
 <template>
     <div>
+
+       <div id="load" v-if="load">
+                <div class="lds-dual-ring"></div>
+       </div>
+
         <div class="head-panel">
           <div class="l-hepan">
             <a href="#">
@@ -20,8 +25,12 @@
 
 <script>
 export default {
+     data:()=>({
+       load:0
+     }),
        methods:{
         logout(){
+          this.load=1;
             axios.post("/api/logout").then(()=>{
                 localStorage.removeItem("token")
                 this.$router.push("/login");

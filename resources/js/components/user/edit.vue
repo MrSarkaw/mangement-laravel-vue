@@ -5,12 +5,16 @@
                 <router-link :to="{name:'task.add'}"><i class="fas fa-plus"></i>Add Task</router-link>
                 <router-link :to="{name:'users.add'}" style="margin-left:10px"><i class="fas fa-user-plus"></i> Add User</router-link>
             </div>
-            <p style="color:green">  {{ message }}</p>
+
+
+             <div style="margin-top:10px" v-if="form.name == ''">
+              <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>              
+            </div>
           
-            <div class="b-opfo">
+            <div class="b-opfo" v-else>
                 <div class="add-user">
                     <fieldset>
-                    <legend>Add new user account</legend>
+                    <legend>Edit user account</legend>
                     <div class="insideau">
                         <label for="" class="mt0">Full Name</label>
                         <input type="text"  v-model="form.name">
@@ -66,13 +70,18 @@ export default {
             path:"",
             isAdmin:""
         }),
-        message:""
     }),
     methods:{
         updateuser(){
             this.form.patch("/api/users/"+this.$route.params.id)
                 .then((res)=>{
-                    this.message=res.data.message;
+                   Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1000
+                  })
                 }).catch(()=>{
                     console.log("error")
                 })

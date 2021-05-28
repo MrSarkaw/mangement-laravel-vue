@@ -3,6 +3,7 @@ import {app} from "../../app"
 const state = {
     user: {},
     errors:{},
+    
 };
 
 const getters = {};

@@ -1,15 +1,6 @@
 <template>
     <div>
 
-        
-        {{ message }}
-      
-        
-
-         <br>
-
-
-
           <div class="operatingForm">
             <div class="h-opfo">
                 <router-link :to="{name:'task.add'}"><i class="fas fa-plus"></i>Add Task</router-link>
@@ -74,13 +65,16 @@ export default {
             path:"",
             isAdmin:""
         }),
-        message:""
     }),
     methods:{
         newuser(){
             this.form.post("/api/users")
                 .then((res)=>{
-                    this.message=res.data.message;
+                     Swal.fire(
+                            'created successfully',
+                            '',
+                            'success'
+                            )
                     this.form.reset();
                 }).catch(()=>{
                     console.log("error")

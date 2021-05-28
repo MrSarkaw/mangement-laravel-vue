@@ -1,7 +1,10 @@
 <template>
     <div>
-            {{ message }}
-        <div style="border:1px solid black;padding:10px" v-for="(user,index) in users" :key="index">
+        <div style="margin-top:10px" v-if="Object.keys(users).length == 0">
+              <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>              
+        </div>
+
+        <div v-else style="border:1px solid black;padding:10px" v-for="(user,index) in users" :key="index">
             <img v-if="user.path != null" :src="'profileImg/'+user.path" width="80" style="border-radius:50%" height="80" alt="">
             <div v-if="user.path == null" class="profile">
                 <p>{{ user.name.charAt(0) }}</p>
@@ -19,7 +22,6 @@
 <script>
 export default {
     data:()=>({
-        message:"",
         users:[],
     }),
     methods:{
@@ -28,7 +30,13 @@ export default {
             axios.delete("/api/users/"+id)
                 .then((res)=>{
                     this.users.splice(index,1);
-                    this.message=res.data.message;
+                        Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'the user has been deleted',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                 }).catch((errr)=>{
                     console.log(errr);
                 })

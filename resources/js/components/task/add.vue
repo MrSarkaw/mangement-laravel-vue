@@ -6,14 +6,13 @@
             <router-link :to="{name:'users.add'}" style="margin-left:10px"><i class="fas fa-user-plus"></i> Add User</router-link>
           </div>
             
-            <p style="color:green">{{ message }}</p>
         
             <br>
 
             <div class="b-opfo">
                 <div class="add-user">
                     <fieldset>
-                    <legend>Add New Task</legend>
+                    <legend>Edit Task</legend>
                         <label for="" class="mt0">Title</label>
                         <input type="text" name="title" v-model="form.title">
                         <div v-if="form.errors.has('title')" v-html="form.errors.get('title')" class="error" />
@@ -75,7 +74,6 @@ export default {
     methods:{
         //add task and assign user
         insert(){
-            this.message='',
             this.error={}
 
             
@@ -87,7 +85,11 @@ export default {
                         "task_id":res.data.taskId
                     })
                     .then((response)=>{
-                         this.message=res.data.message
+                        Swal.fire(
+                            'added successfully',
+                            '',
+                            'success'
+                            )
                          this.form.reset();
                     }).catch(()=>{
                         

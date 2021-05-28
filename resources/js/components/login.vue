@@ -1,6 +1,8 @@
 <template>
     <div>
-
+            <div id="load" v-if="load">
+                <div class="lds-dual-ring"></div>
+            </div>
              <div class="loginff">
                 <div class="loign">
                     <div class="in-loign">
@@ -12,6 +14,9 @@
                             style="padding-left:40px">
                          <p class="m0" v-for="(error,index) in errors.password" :key="index+100">{{ error }}</p> <br>
                         <input type="submit" @click="login()" value="Login">
+                         <p style="padding:5px;text-align:center;background:red;color:white;margin-top:10px" v-if="errors.message">
+                            {{ errors.message }}
+                        </p>
                     </div>
                 </div>
          </div>
@@ -25,7 +30,8 @@ export default {
         user:{
             email:"",
             password:""
-        }
+        },
+        load:0
     }),
     computed:{
         errors(){
@@ -36,7 +42,12 @@ export default {
     },
     methods:{
         login(){
-            this.$store.dispatch("currentUser/login",this.user)          
+            this.load=1;
+            this.$store.dispatch("currentUser/login",this.user);
+            
+            setTimeout(()=>{
+                this.load=0;
+            },500)
         }
         
     }
@@ -47,5 +58,13 @@ export default {
 <style>
     p{
         color:red
+    }
+
+    #load{
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background: rgba(0, 0, 0, 0.473);
+        z-index: 50;
     }
 </style>

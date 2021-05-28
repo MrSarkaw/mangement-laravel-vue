@@ -1,11 +1,10 @@
 <template>
     <div>
         <div class="r-body">
-       
          <headerC>
              <div slot="image">
                 <div v-if="currentUser.path == null" class="profile">
-                    <p>{{ currentUser.name.charAt(0) }}</p>
+                    <p style="margin:0px">{{ currentUser.name.charAt(0) }}</p>
                 </div>
                 <div v-if="currentUser.path != null" class="profile">
                     <img :src="'/profileImg/'+currentUser.path" alt="" width="50px" height="50px" style="border-radius:50%">

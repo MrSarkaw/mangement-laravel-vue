@@ -1,12 +1,17 @@
 <template>
     <div>
-
+     
 
         <div class="operatingForm">
           <div class="h-opfo">
             <router-link :to="{name:'task.add'}"><i class="fas fa-plus"></i>Add Task</router-link>
             <router-link :to="{name:'users.add'}"><i class="fas fa-user-plus"></i> Add User</router-link>
           </div>
+
+           <div style="margin-top:10px" v-if="Object.keys(tasks).length == 0">
+              <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>              
+            </div>
+
           <div class="b-opfo">
             <!-- full topic block -->
             <div class="jobtopic"  v-for="(task,index) in tasks" :key="index" >
@@ -33,25 +38,6 @@
          
           </div>
         </div>
-
-
-        <!-- 
-          <br>
-
-        <divstyle="border:1px solid black;padding:10px">
-            <h3></h3>
-            <h4></h4>
-            <div v-for="user in task.users" :key="user.id" style="border:1px solid black;padding:10px">
-                {{ user.name }}
-            </div>
-
-
-            <div>
-                <p></p>
-                <button delete</button> 
-            </div>
-        </div>
-         -->
     </div>
 </template>
 
@@ -63,6 +49,13 @@ export default {
     methods:{
         deletetask(id,index){
            axios.delete("/api/tasks/"+id+"").then(()=>{
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'the task has been deleted',
+                    showConfirmButton: false,
+                    timer: 1000
+                  })
                 this.tasks.splice(index,1);
            }).catch((err)=>{
                console.log(err);

@@ -14,6 +14,7 @@
 import Leftside from './layouts/leftside.vue';
 import rightside from './layouts/rightside.vue';
 export default {
+   
     components:{Leftside,rightside},
     computed:{
       currentUser:{

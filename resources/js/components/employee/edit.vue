@@ -7,7 +7,7 @@
             <div class="b-opfo">
                 <div class="add-user">
                     <fieldset>
-                    <legend>Add new user account</legend>
+                    <legend>Edit Profile</legend>
                     <div class="insideau">
                         <label for="" class="mt0">Full Name</label>
                         <input type="text"  v-model="form.name">

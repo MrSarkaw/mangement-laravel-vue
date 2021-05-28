@@ -3,7 +3,7 @@
         
         
         <div class="container">
-            <div>
+            <div id="todoDiv">
               <p style="background:#4791b3;padding:5px;color:white;border-radius:10px">todo</p>      
                 <div id="todo">
                     <div  
@@ -30,7 +30,7 @@
         
                 </div>
             </div>
-             <div>
+             <div id="inproDiv">
              <p style="background:#b3ac47;padding:5px;color:white;border-radius:10px">inprogress</p>   
                 <div id="inprogress">
                     <div  
@@ -55,7 +55,7 @@
                     </div>
                 </div>
              </div>
-             <div>
+             <div id="doneDiv">
                 <p style="background:#47b350;padding:5px;color:white;border-radius:10px">done</p>   
                 <div id="done">
                     <div  
@@ -106,18 +106,37 @@ export default {
                 
        },
        draging(index){
+           let todo=document.getElementById("todoDiv");
+           let inprogress=document.getElementById("inproDiv");
+           let done=document.getElementById("doneDiv");
+
+            this.deleteStyle();
+
            if(this.pick){
                let task=document.getElementById(index);
                task.style.top=event.clientY - 30 + "px";
-               task.style.left=event.clientX - 260 + "px";
+               task.style.left=event.clientX - 240 + "px";
+
+                console.log(event.clientX-240)
+                if(( event.clientX - 240 ) < 400){
+                    todo.style.boxShadow="0px 0px 10px rgba(0, 0, 0, 0.486)";
+                    todo.style.borderRadius="20px";
+                }else if(( event.clientX - 240 ) >= 400 && ( event.clientX - 240 ) < 850){
+                    inprogress.style.boxShadow="0px 0px 10px rgba(0, 0, 0, 0.486)";
+                    inprogress.style.borderRadius="20px";
+                }else if(( event.clientX - 240 ) > 850){
+                    done.style.boxShadow="0px 0px 10px rgba(0, 0, 0, 0.486)";
+                    done.style.borderRadius="20px";
+                }
            }
        },
        pickUp(index,taskid){
+            this.deleteStyle();
 
              let task=document.getElementById(index);
             if(task.style.left){
                 
-                if(task.style.left < "400"){
+                if(( event.clientX - 240 ) < "400"){
                     let newData=this.notStart.splice(index,1);
                     if(newData[0]){
                         this.updateState(taskid,0);
@@ -137,7 +156,7 @@ export default {
                     }   
                 }
 
-                if(task.style.left > "400" && task.style.left < "850"){
+                if(( event.clientX - 240 ) >= "400" && ( event.clientX - 240 ) < "850"){
                     let newData=this.notStart.splice(index,1);
                     if(newData[0]){
                          this.updateState(taskid,1);
@@ -157,7 +176,7 @@ export default {
                     }
                 }
 
-                if(task.style.left > "850"){
+                if(( event.clientX - 240 ) > "850"){
                     let newData=this.notStart.splice(index,1);
                     if(newData[0]){
                         this.updateState(taskid,2);
@@ -183,6 +202,15 @@ export default {
             task.removeAttribute("style");
            this.pick=false;
        },
+        deleteStyle(){
+            let todo=document.getElementById("todoDiv");
+           let inprogress=document.getElementById("inproDiv");
+           let done=document.getElementById("doneDiv");
+            
+            todo.removeAttribute("style");
+            inprogress.removeAttribute("style");
+            done.removeAttribute("style");
+        },
 
        updateState(id,status){
            axios.put("/api/employee/task/"+id,{
@@ -293,4 +321,6 @@ export default {
         text-align: left;
         font-size: 15px;
     }
+
+    
 </style>

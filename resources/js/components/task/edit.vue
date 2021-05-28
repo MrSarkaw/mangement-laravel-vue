@@ -5,13 +5,11 @@
             <router-link :to="{name:'task.add'}"><i class="fas fa-plus"></i>Add Task</router-link>
             <router-link :to="{name:'users.add'}" style="margin-left:10px"><i class="fas fa-user-plus"></i> Add User</router-link>
           </div>
-            <br>
-            
-            <p style="color:green">{{ message }}</p>
-        
-            <br>
+            <div style="margin-top:10px" v-if="form.title == ''">
+              <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>              
+            </div>
 
-            <div class="b-opfo">
+            <div class="b-opfo" v-else>
                 <div class="add-user">
                     <fieldset>
                     <legend>Add New Task</legend>
@@ -76,7 +74,6 @@ export default {
     methods:{
         //update task and assign user
         update(){
-            this.message='',
             this.error={}
 
                 this.form.put("/api/tasks/"+this.$route.params.id)
@@ -87,6 +84,13 @@ export default {
                         "users":this.form.userCheck,
                     })
                     .then((response)=>{
+                          Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                                showConfirmButton: false,
+                                timer: 1000
+                            })
                          this.message=res.data.message
                     }).catch(()=>{
                         

@@ -15,7 +15,7 @@ window.Echo = new Echo({
     key:"56f06aedd361f6cdf71e",
     encrypted: true,
     cluster: "ap2",
-    wsHost:"127.0.0.1:6001",
+    wsHost:"mangment.dastey2.com:6001",
     disableStats: true,
 });
 
