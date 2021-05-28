@@ -40,7 +40,6 @@ class userRequest extends FormRequest
                 "email"=>"required|unique:users,email|max:100|email",
                 "password"=>"required|min:6|confirmed",
                 "user_id"=>"numeric",
-                "path"=>"sometimes|image|mimes:png,jpg|max:2048",
                 "isAdmin"=>"required|numeric"
             ];
         }

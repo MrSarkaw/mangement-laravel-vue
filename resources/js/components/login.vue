@@ -1,13 +1,20 @@
 <template>
     <div>
-        <p>{{ errors.message }}</p>
-        <input type="text" v-model="user.email"> 
-        <p v-for="(error,index) in errors.email" :key="index">{{ error }}</p> <br>
 
-        <input type="password" v-model="user.password"> 
-         <p v-for="(error,index) in errors.password" :key="index+100">{{ error }}</p> <br>
+             <div class="loginff">
+                <div class="loign">
+                    <div class="in-loign">
+                        <h1>Welcome!</h1>
+                        <i class="far fa-envelope"></i><input type="text" placeholder="Email" v-model="user.email">
+                       <p class="m0" v-for="(error,index) in errors.email" :key="index">{{ error }}</p> <br>
 
-        <button @click="login()">login</button>
+                        <i class="fas fa-lock"></i><input type="password" v-model="user.password" placeholder="Password"
+                            style="padding-left:40px">
+                         <p class="m0" v-for="(error,index) in errors.password" :key="index+100">{{ error }}</p> <br>
+                        <input type="submit" @click="login()" value="Login">
+                    </div>
+                </div>
+         </div>
         
     </div>
 </template>
@@ -35,3 +42,10 @@ export default {
     }
 }
 </script>
+
+
+<style>
+    p{
+        color:red
+    }
+</style>

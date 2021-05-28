@@ -1,31 +1,13 @@
 <template>
-    <div> 
-            <!-- <p>todo</p>
-
-          
-            <hr> -->
-          <!--   <p>inProgress</p>
-
-            <div style="border:1px solid black;" v-for="(item,index) in inProgress" :key="index+100">
-                {{ item.task.title }}
-                <br>
-                {{ item.task.description }}
-            </div>
-            <hr>
-            <p>done</p>
-
-            <div style="border:1px solid black;" v-for="(item,index) in done" :key="index+200">
-                {{ item.task.title }}
-                <br>
-                {{ item.task.description }}
-            </div> -->
+    <div style="width:100%"> 
+        
         
         <div class="container">
             <div>
-            <p>todo</p>      
+              <p style="background:#4791b3;padding:5px;color:white;border-radius:10px">todo</p>      
                 <div id="todo">
                     <div  
-                    class="item"
+                    class="item todoitem"
                         v-for="(item,index) in notStart" 
                         :key="index"
                         :id="index"
@@ -33,18 +15,26 @@
                         @mousedown="drag(index)"
                         @mousemove="draging(index)"
                         >
-                        {{ item.task.title }}
-                            <br>
-                        {{ item.task.description }}
+                        <div class="title">
+                             {{ item.task.title }}
+                        </div>
+                        <div class="desc">
+                            {{ item.task.description }}
+                            <span style="display:block;margin-top:5px">
+                                <i class="far fa-clock"></i>
+                                {{ item.task.start_date }}/{{ item.task.end_date }}    
+                            </span>
+                        </div>
+                           
                     </div>
         
                 </div>
             </div>
              <div>
-             <p>inprogress</p>   
+             <p style="background:#b3ac47;padding:5px;color:white;border-radius:10px">inprogress</p>   
                 <div id="inprogress">
                     <div  
-                        class="item"
+                        class="item itemprogress"
                         v-for="(item,index) in inProgress" 
                         :key="index+100"
                         :id="index+100"
@@ -52,17 +42,24 @@
                         @mousedown="drag(index+100)"
                         @mousemove="draging(index+100)"
                         >
-                        {{ item.task.title }}
-                            <br>
-                        {{ item.task.description }}
+                       <div class="title">
+                             {{ item.task.title }}
+                        </div>
+                        <div class="desc">
+                            {{ item.task.description }}
+                            <span style="display:block;margin-top:5px">
+                                <i class="far fa-clock"></i>
+                                {{ item.task.start_date }}/{{ item.task.end_date }}    
+                            </span>
+                        </div>
                     </div>
                 </div>
              </div>
              <div>
-                <p>done</p>   
+                <p style="background:#47b350;padding:5px;color:white;border-radius:10px">done</p>   
                 <div id="done">
                     <div  
-                        class="item"
+                        class="item itemdone"
                         v-for="(item,index) in done" 
                         :key="index+200"
                         :id="index+200"
@@ -70,15 +67,22 @@
                         @mousedown="drag(index+200)"
                         @mousemove="draging(index+200)"
                         >
-                        {{ item.task.title }}
-                            <br>
-                        {{ item.task.description }}
+                       <div class="title">
+                             {{ item.task.title }}
+                        </div>
+                        <div class="desc">
+                            {{ item.task.description }}
+                            <span style="display:block;margin-top:5px">
+                                <i class="far fa-clock"></i>
+                                {{ item.task.start_date }}/{{ item.task.end_date }}    
+                            </span>
+                        </div>
                     </div>
                 </div>
              </div>
         </div>
         
-
+        
     </div>
 </template>
 <script>
@@ -97,7 +101,7 @@ export default {
        drag(index){
            this.pick=true;
            let task=document.getElementById(index);
-           task.style.width="35%";
+           task.style.width="27%";
            task.style.position="absolute";
                 
        },
@@ -109,7 +113,10 @@ export default {
            }
        },
        pickUp(index,taskid){
+
              let task=document.getElementById(index);
+            if(task.style.left){
+                
                 if(task.style.left < "400"){
                     let newData=this.notStart.splice(index,1);
                     if(newData[0]){
@@ -130,7 +137,7 @@ export default {
                     }   
                 }
 
-                if(task.style.left > "400" && task.style.left < "700"){
+                if(task.style.left > "400" && task.style.left < "850"){
                     let newData=this.notStart.splice(index,1);
                     if(newData[0]){
                          this.updateState(taskid,1);
@@ -150,7 +157,7 @@ export default {
                     }
                 }
 
-                if(task.style.left > "700"){
+                if(task.style.left > "850"){
                     let newData=this.notStart.splice(index,1);
                     if(newData[0]){
                         this.updateState(taskid,2);
@@ -169,8 +176,11 @@ export default {
                         }
                     }
                 }
+            }
+
+
             
-             task.removeAttribute("style");
+            task.removeAttribute("style");
            this.pick=false;
        },
 
@@ -231,21 +241,56 @@ export default {
 <style scoped>
     .container{
         display: grid;
-        grid-gap: 10px;
-        grid-template-columns: 440px 440px 440px
+        grid-gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 10px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
-    .container > div{
-        background: rgb(66, 56, 56);
+    #todo{
+        border-top: 4px solid #4791b3;
         padding: 10px;
-        border-radius: 30px;
-        color:white
-        
+        color:white 
+    }
+    #inprogress{
+        border-top: 4px solid #b3ac47;
+        padding: 10px;
+        color:white 
+    }
+    #done{
+        border-top: 4px solid #47b350;
+        padding: 10px;
+        color:white 
+    }
+    .todoitem{
+        border-left:2px solid #4791b3;
+        border-right:2px solid #4791b3;
+    }
+
+    .itemprogress{
+        border-left:2px solid #b3ac47;
+        border-right:2px solid #b3ac47;
+    }
+    .itemdone{
+        border-left:2px solid #47b350;
+        border-right:2px solid #47b350;
     }
     .item{
-        border:1px solid black; text-align:center;padding:10px;width:500px;background:yellow;
-        width: 400px;
+        text-align:center;padding:10px;
+        width: 350px;
         color:rgb(66, 56, 56);
-        border-radius: 40px;
-        
+        margin-top: 10px;
+        margin-left: auto; margin-right: auto;
+        cursor: pointer;
+    }
+
+    .title{
+        text-align: left;
+        font-size: 19px;
+    }
+    .desc{
+        text-align: left;
+        font-size: 15px;
     }
 </style>

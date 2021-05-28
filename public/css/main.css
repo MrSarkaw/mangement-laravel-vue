@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body {
+  margin: 0;
+  background: #f8f5f1;
+  font-family: 'Open Sans', sans-serif;
+}
+.loginff {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+.loign {
+  width: 600px;
+  color: #1791b3;
+  background: #ededed;
+}
+.in-loign {
+  width: 300px;
+  margin: 0px auto;
+  padding: 46px 0px;
+}
+.in-loign h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 0px;
+}
+.in-loign input {
+  margin-bottom: 14px;
+}
+.in-loign input[type=submit] {
+  background: #1791b3;
+  color: #ffffff;
+  font-size: 19px;
+  border-radius: 3px;
+}
+.in-loign input[type=submit]:hover {
+  background: #1d9fc3;
+}
+.defaultbtn {
+  background: #1791b3;
+  color: #ffffff;
+  font-size: 19px;
+  border-radius: 3px;
+}
+.defaultbtn:hover {
+  background: #1d9fc3;
+}
+.in-loign i {
+  position: absolute;
+  font-size: 20px;
+  margin: 7px 0px 0px 6px;
+}
+.in-loign input[type="text"] {
+  padding-left: 40px;
+}
+.l-nav {
+  background: #1791b3;
+  float: left;
+  width: 65px;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  z-index: 100;
+}
+.l-nav a {
+  color: #fff;
+  font-size: 35px;
+  display: table;
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 0px 8px;
+  box-sizing: border-box;
+}
+.l-nav a:hover {
+  background: #167d9a;
+}
+.r-body {
+  display: table;
+  width: calc(100% - 65px);
+  position: relative;
+  left: 65px;
+}
+.head-panel {
+  background: #ffffff;
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #ff8d00;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 21px;
+}
+.l-hepan {
+  float: left;
+  width: 200px;
+}
+.r-hepan {
+  float: right;
+}
+.l-hepan-img {
+  color: #1791b3;
+  font-size: 39px;
+  width: 50px;
+  text-align: center;
+  float: left;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.r-hepan-img {
+  float: left;
+  width: calc(100% - 50px);
+  padding: 10px;
+}
+.r-hepan-img * {
+  margin: 0;
+}
+.r-hepan-img h3 {
+  font-weight: normal;
+  font-size: 17px;
+  color: #1791b3;
+}
+.r-hepan-img span {
+  font-size: 12px;
+  color: #8c8c8c;
+}
+.l-hepan a {
+  width: 100%;
+  display: flex;
+}
+.r-hepan a {
+  background: #ef5050;
+  color: #fff;
+  padding: 2px 17px;
+  border-radius: 3px;
+  border: 1px solid #ef5050;
+}
+.r-hepan a i {
+  margin-right: 6px;
+}
+.r-hepan a:hover {
+  background: #ffffff;
+  color: #ef5050;
+}
+.l-hepan a:hover h3 {
+  text-decoration: underline;
+}
+.operatingForm {
+    width: 800px;
+    margin: 45px auto;
+    display: table;
+}
+.h-opfo a {
+    background: #43648e;
+    padding: 4px 10px;
+    color: #fff;
+    border-radius: 3px;
+    float: left;
+    margin-right: 5px;
+    border: 1px solid #43648e;
+}
+.h-opfo a i {
+    margin-right: 5px;
+}
+.h-opfo {display: table;width: 100%;}
+.h-opfo a:hover {
+    color: #43648e;
+    background: #fff0;
+}
+.b-opfo {
+    display: table;
+    width: 100%;
+    margin: 8px 0px 40px 0px;
+}
+.jobtopic {
+    background: #fdfdfd;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #d6d6d6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    margin-bottom: 10px;
+}
+.l-joto h2 {
+    font-weight: normal;
+    color: #1791b3;
+    margin: 0px;
+    font-size: 23px;
+}
+.l-joto p {
+    margin: 0px 0px 16px 0px;
+    font-size: 14px;
+    color: #4a4a4a;
+}
+.joto-time {
+    font-size: 14px;
+    width: 110px;
+}
+.b-r-joto {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.b-r-joto a {
+    font-size: 25px;
+    margin: 0px 1px;
+    width: 30px;
+    float: left;
+    padding: 0px 2px;
+    border-radius: 3px;
+    color: #1791b3;
+    border: 1px solid #fff0;
+    text-align: center;
+}
+.b-r-joto a:hover {
+    background: #f3f0ed;
+    border-color: #ddd;
+}
+.t-r-joto a {
+    color: #1791b3;
+    font-size: 14px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid #fff0;
+}
+.t-r-joto a i {
+    margin-right: 4px;
+}
+.t-r-joto {
+    border-bottom: 1px solid #b7b7b7;
+    padding: 0px 0px 4px 0px;
+    margin-bottom: 2px;
+}
+.t-r-joto a:hover {background: #f3f0ed;border-color: #ddd;}
+.add-user fieldset {
+    background: #fdfdfd;
+    padding: 27px;
+    border-radius: 5px;
+    border: 1px solid #d6d6d6;
+    margin-top: 11px;
+}
+.add-user fieldset legend {
+    font-size: 21px;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.add-user fieldset label {
+    font-size: 15px;
+    color: #333;
+    display: table;
+    margin-top: 13px;
+}
+.add-user fieldset select {
+    margin-bottom: 15px;
+}
+.insideau {
+  width: 400px;
+  margin: 0 auto;
+}
+.descfie {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100% !important;
+    min-height: 145px;
+    max-height: 145px;
+    height: 145px;
+    margin-bottom: 10px;
+}
+.userst {
+  min-height: 100px;
+  max-height: 154px;
+  display: flex;
+  align-content: flex-start;
+  padding: 0;
+  overflow: auto;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.userst li {
+    list-style: none;
+    width: 165px;
+    background: #f3f3f3;
+    padding: 2px 4px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+}
+.userst li input {
+    float: left;
+}
+.userst li label {cursor: pointer;float: left;margin: 0;width: calc(100% - 22px);}
+.userst li label:hover {
+    text-decoration: underline;
+}
+.users-tl {
+    border-bottom: 1px solid #c1c1c1;
+    width: 100%;
+    padding-bottom: 5px;
+}
+.taskDate span {
+    color: #404040;
+    font-size: 15px;
+}
+.taskDate {
+    background: #f3f3f3;
+    padding: 10px;
+}
+.taskDate input:nth-child(2) {
+    margin-right: 28px;
+}
+.tabcontent {
+    display: none;
+    border-left: 4px solid;
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
+}
+.tablinks {
+    border: none;
+    font-size: 21px;
+    padding: 5px 10px;
+    margin-right: 8px;
+    cursor: pointer;
+    color: #fff;
+    border-bottom: 2px solid;
+}
+.tbnta {background: #f1236f;border-bottom-color: #cc1b5c;}
+.tbinp {background: #fbb958;border-bottom-color: #dca14b;}
+.tbcom {background: #3dc165;border-bottom-color: #309e52;}
+#newTasks{border-color: #f1236f;}
+#inProgress{border-color: #fbb958;}
+#completed{border-color: #3dc165;}

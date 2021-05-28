@@ -1,18 +1,10 @@
 <template>
-    <div>
-        <headerC>
-             <router-link :to="{name:'employee.edit'}" slot="currentUser">
-                 <h2>
-                     <img :src="'/profileImg/'+currentUser.path" alt="" width="80" height="80" style="border-radius:50%">
-                     {{ currentUser.email }} 
-                    </h2>
-              </router-link> 
-        </headerC>
-        <br>
+    <div v-if=" Object.keys(currentUser).length != 0">
+       
     
-        <!-- <Leftside></Leftside> -->
+       <Leftside></Leftside>
         
-        <rightside >
+        <rightside>
             <router-view></router-view>
         </rightside>
         
@@ -21,9 +13,9 @@
 
 <script>
 import rightside from  '../layouts/employee/rightside';
-import headerC from '../layouts/headerC.vue'
+import Leftside from  '../layouts/employee/leftside';
 export default {
-    components:{rightside,headerC},
+    components:{rightside,Leftside},
     computed:{
       currentUser:{
             get(){

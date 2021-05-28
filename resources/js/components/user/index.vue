@@ -12,6 +12,7 @@
             <router-link :to="{name:'users.edit',params:{id:user.id}}">edit</router-link>
             <button @click="deleteUser(user.id,index)">delete</button>
         </div>
+        
     </div>
 </template>
 

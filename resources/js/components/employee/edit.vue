@@ -1,34 +1,42 @@
 <template>
       <div>
+<div class="operatingForm">
+            
+            <p style="color:green">  {{ message }}</p>
+          
+            <div class="b-opfo">
+                <div class="add-user">
+                    <fieldset>
+                    <legend>Add new user account</legend>
+                    <div class="insideau">
+                        <label for="" class="mt0">Full Name</label>
+                        <input type="text"  v-model="form.name">
+                        <div v-if="form.errors.has('name')" v-html="form.errors.get('name')" class="error" />
 
-         <router-link :to="{name:'employee.index'}">back</router-link> <br>
-        <br>
-        <br>
 
-        
-        {{ message }}
-        <input placeholder="name" v-model="form.name"> 
-        <div v-if="form.errors.has('name')" v-html="form.errors.get('name')" />
 
-        <br>
-        
-        <input placeholder="email" v-model="form.email" type="email"> 
-        <div v-if="form.errors.has('email')" v-html="form.errors.get('email')" />
+                        <label for="">Email</label>
+                        <input type="text" name="email" v-model="form.email">
+                        <div v-if="form.errors.has('email')" v-html="form.errors.get('email')" class="error" />
 
-        <br>
-        
-        <input placeholder="password" v-model="form.password" type="password">
-        <div v-if="form.errors.has('password')" v-html="form.errors.get('password')" />
+                        <label for="">Password</label>
+                        <input v-model="form.password" type="password">
+                        <div v-if="form.errors.has('password')" v-html="form.errors.get('password')" class="error" />
 
-        <input placeholder="password confirmation" v-model="form.password_confirmation" type="password">
-        <div v-if="form.errors.has('password_confirmation')" v-html="form.errors.get('password_confirmation')" />
-        
-         <br>
-        <input placeholder="imgae" @change="getNameImage" type="file"> <br>
-       
-         <br>
+                        <label for="">password_confirmation</label>
+                        <input  v-model="form.password_confirmation" type="password">
+                    <div v-if="form.errors.has('password_confirmation')" v-html="form.errors.get('password_confirmation')" class="error" />
+                    
+                        <label for="">image</label>
+                        <input  @change="getNameImage" type="file">
 
-        <button @click="updateuser()">update</button>
+                       
+                        <input class="defaultbtn" type="submit" @click="updateuser()" value="update" style="margin-top:10px">
+                    </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

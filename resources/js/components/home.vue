@@ -1,11 +1,5 @@
 <template>
-    <div>
-        <headerC>
-             <router-link :to="{name:'users.edit',params:{id:currentUser.id}}" slot="currentUser">
-                 <h2>{{ currentUser.email }}</h2>
-              </router-link> 
-        </headerC>
-        <br>
+    <div v-if="Object.keys(currentUser).length != 0">
     
         <Leftside></Leftside>
         
@@ -19,9 +13,8 @@
 <script>
 import Leftside from './layouts/leftside.vue';
 import rightside from './layouts/rightside.vue';
-import headerC from './layouts/headerC.vue'
 export default {
-    components:{Leftside,rightside,headerC},
+    components:{Leftside,rightside},
     computed:{
       currentUser:{
             get(){

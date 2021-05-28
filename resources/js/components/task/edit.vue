@@ -1,38 +1,60 @@
 <template>
     <div>
-          <router-link :to="{name:'task.index'}">back</router-link> <br>
-        <br>
-        <br>
+        <div class="operatingForm">
+            <div class="h-opfo">
+            <router-link :to="{name:'task.add'}"><i class="fas fa-plus"></i>Add Task</router-link>
+            <router-link :to="{name:'users.add'}" style="margin-left:10px"><i class="fas fa-user-plus"></i> Add User</router-link>
+          </div>
+            <br>
+            
+            <p style="color:green">{{ message }}</p>
+        
+            <br>
 
-         {{ message }}
-        <br>
-      
-       <input type="text" placeholder="title" v-model="form.title">
-         <div v-if="form.errors.has('title')" v-html="form.errors.get('title')" />
-    
-       <br>
-    
-       <input type="text" placeholder="description" v-model="form.description">
-         <div v-if="form.errors.has('description')" v-html="form.errors.get('description')" />
-       
-       <br>
-    
-       start date <input type="date" name="" id="" v-model="form.start_date">
-         <div v-if="form.errors.has('start_date')" v-html="form.errors.get('start_date')" />
-       
-       <br>
-    
-       end date <input type="date" name="" id="" v-model="form.end_date">
-         <div v-if="form.errors.has('end_date')" v-html="form.errors.get('end_date')" />
+            <div class="b-opfo">
+                <div class="add-user">
+                    <fieldset>
+                    <legend>Add New Task</legend>
+                        <label for="" class="mt0">Title</label>
+                        <input type="text" name="title" v-model="form.title">
+                        <div v-if="form.errors.has('title')" v-html="form.errors.get('title')" class="error" />
 
-       <br>
-       <br>
-       <br>
+                        <label for="">Description</label>
+                        <textarea class="descfie" v-model="form.description"></textarea>
+                        <div v-if="form.errors.has('description')" v-html="form.errors.get('description')" class="error" />
 
-          <multiselect v-model="form.userCheck" :options="users" :multiple="true"  track-by="id"   label="name" :taggable="true" @tag="addTag"></multiselect>
+                        
+                        <div class="taskDate">
+                        
+                        <span>Start</span>
+                        <input type="date" v-model="form.start_date">
+                        <div v-if="form.errors.has('start_date')" v-html="form.errors.get('start_date')" class="error" />
+                        
+                        <span>End</span>
+                        <input type="date"  v-model="form.end_date">
+                        <div v-if="form.errors.has('end_date')" v-html="form.errors.get('end_date')" class="error" />
 
+                        </div>
 
-        <button @click="update">update</button>
+                        <multiselect 
+                        style="margin-top:10px"
+                        v-model="form.userCheck" 
+                        :options="users" 
+                        :multiple="true"  
+                        track-by="id"   
+                        label="name" 
+                        :taggable="true" 
+                        @tag="addTag"></multiselect>
+
+                        <br>
+                        <br>
+
+                        <input class="defaultbtn"  @click="update" type="submit" value="update">
+                    </fieldset>
+                </div>
+            </div>
+
+          </div>
 
     </div>
 </template>
